@@ -25,8 +25,8 @@ ReadableString.prototype._read = function (size) {
       this._pos = 0
       break
     }
-    end = size && this._pos + size < buf.length ? this._pos + size : buf.length
-    chunk = buf.slice(this._pos, end)
+    end = size && this._pos + size < buf.length ? size : buf.length
+    chunk = buf.slice(this._pos, this._pos + end)
     ok = this.push(chunk)
     this._pos += end
   } while (ok && end > 0)
